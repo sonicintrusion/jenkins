@@ -12,6 +12,7 @@ Vagrant.configure("2") do |config|
     master.vm.boot_timeout = 300
     master.vm.network "forwarded_port", guest: 8080, host: 8888
     #master.vm.network "private_network", ip: "192.168.50.4", :adapter => 2, virtualbox__inet: true
+    ##private network doesn't work because the default route is changed and interrupts the provision process
     master.vm.synced_folder "./Downloads", "/downloads"
   end
   config.vm.define "slave" do |slave|
